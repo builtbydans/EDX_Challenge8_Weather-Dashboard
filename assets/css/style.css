@@ -1,0 +1,10 @@
+#weather-box {
+  height: 300px;
+  padding: 10px;
+  margin-top: 25px;
+  border: 1px solid black !important;
+}
+
+#five-day-box {
+  padding: 10px;
+}

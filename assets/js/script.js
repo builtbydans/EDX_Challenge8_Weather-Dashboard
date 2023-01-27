@@ -14,8 +14,10 @@ var API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=London&appid=$
 // console.log(response);
 // });
 
+var historicChoice = 'City'
+
 // EventListener on Search Button function
 searchBtn.on("click", function(event) {
   event.preventDefault();
-  searchHistory.append('<p>Test</p>'); // CHANGE THIS
+  searchHistory.append(`<p class="btn btn-secondary">${historicChoice}</p>`); // CHANGE THIS
 });
