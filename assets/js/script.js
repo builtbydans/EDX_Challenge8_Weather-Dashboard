@@ -1,5 +1,6 @@
 // DOM variables
 var searchBtn = $('#search-button');
+var searchInput = $('#search-input');
 var searchHistory = $('#history');
 
 // API variables
@@ -14,7 +15,7 @@ var API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=London&appid=$
 // console.log(response);
 // });
 
-var historicChoice = 'City'
+var historicChoice = searchInput.val();
 
 // EventListener on Search Button function
 searchBtn.on("click", function(event) {
