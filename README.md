@@ -15,4 +15,7 @@ The live project can be found here:
 
 ## Future Considerations
 
-TBC
+1. Re-create this project in React.
+2. Utilise Bootstrap to make a more aesthetic UI.
+3. Make this app responsive.
+4. Add features
