@@ -8,3 +8,7 @@
 #five-day-box {
   padding: 10px;
 }
+
+.icons {
+  transform: scale(0.5);
+}
