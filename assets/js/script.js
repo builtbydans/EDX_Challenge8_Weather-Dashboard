@@ -87,12 +87,10 @@ function getFiveForecast() {
 function loadHistory() {
    var loadCity = JSON.parse(localStorage.getItem("savedCity"));
 
-   if (loadCity === "") {
-    null
-   } else {
+   if (loadCity !== null) {
     for (i = 0; i < loadCity.length; i++) {
       searchHistory.append(`<button class="btn btn-secondary mb-2" id="historyBtn">${loadCity[i]}</button>`);
-    }
+    };
   }
 };
 
