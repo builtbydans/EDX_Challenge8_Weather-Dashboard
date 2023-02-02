@@ -18,7 +18,7 @@ searchBtn.on("click", function(event) {
   // Grabbing cityName from input field
   cityName = $('#search-input').val()
   // Adding userSearch to their history in a form of buttons
-  searchHistory.append(`<p class="btn btn-secondary">${cityName}</p>`);
+  searchHistory.append(`<p class="btn btn-secondary" id="historyBtn">${cityName}</p>`);
   // Adding this search to localStorage for saving
   savedCity.push(cityName);
   localStorage.setItem("savedCity", JSON.stringify(savedCity));
@@ -26,6 +26,16 @@ searchBtn.on("click", function(event) {
   getCurrentWeather();
   getFiveForecast();
 });
+
+$('#history').on("click", function(event) {
+  event.preventDefault();
+  var historyBtn = $(event.target);
+  cityName = historyBtn.text();
+  clearDisplays();
+  getCurrentWeather();
+  getFiveForecast();
+});
+
 
 function getCurrentWeather() {
   // Current Weather API request
@@ -53,8 +63,6 @@ function getFiveForecast() {
   // Current Weather API request
   var FIVE_DAY = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}`;
   // Running AJAX Fetch
-  var forecastHeader = $(`<h3>5 Day Forecast for: ${cityName}</h3>`);
-  fiveDayForecast.append(forecastHeader);
   $.ajax({
     url: FIVE_DAY,
     method: "GET"

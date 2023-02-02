@@ -12,3 +12,11 @@
 .icons {
   transform: scale(0.5);
 }
+
+#historyBtn {
+  cursor: pointer;
+}
+
+#historyBtn:hover {
+  transform: scale(1.05);
+}
