@@ -10,6 +10,9 @@ var kelvToCels = 273.15;
 // API variables
 var API_KEY = '64b3c6a31b964dd3885bceb16d79051e';
 
+// Renders any localStorage saved memory
+loadHistory();
+
 // EventListener on Search Button function
 searchBtn.on("click", function(event) {
   event.preventDefault();
@@ -18,7 +21,7 @@ searchBtn.on("click", function(event) {
   // Grabbing cityName from input field
   cityName = $('#search-input').val()
   // Adding userSearch to their history in a form of buttons
-  searchHistory.append(`<p class="btn btn-secondary" id="historyBtn">${cityName}</p>`);
+  searchHistory.append(`<button class="btn btn-secondary" id="historyBtn">${cityName}</button>`);
   // Adding this search to localStorage for saving
   savedCity.push(cityName);
   localStorage.setItem("savedCity", JSON.stringify(savedCity));
@@ -45,7 +48,6 @@ function getCurrentWeather() {
     url: CURRENT_WEATHER,
     method: "GET"
   }).then(function(response) {
-    console.log(response);
     var cityIcon = `https://openweathermap.org/img/w/${response.list[0].weather[0].icon}.png`;
     var cityIconImg = `<img src="${cityIcon}" class="img-fluid icons"/>`;
     // Creating variables for the weatherBox
@@ -81,6 +83,15 @@ function getFiveForecast() {
   });
 };
 
+// Loads history from browser localStorage and renders buttons to page on refresh
+function loadHistory() {
+   var loadCity = JSON.parse(localStorage.getItem("savedCity"));
+   for (i = 0; i < loadCity.length; i++) {
+     searchHistory.append(`<button class="btn btn-secondary mb-2" id="historyBtn">${loadCity[i]}</button>`);
+   }
+};
+
+// Clears all displays
 function clearDisplays() {
   weatherBox.empty();
   fiveDayForecast.empty();
