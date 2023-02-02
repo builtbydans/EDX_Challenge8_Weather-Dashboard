@@ -86,9 +86,14 @@ function getFiveForecast() {
 // Loads history from browser localStorage and renders buttons to page on refresh
 function loadHistory() {
    var loadCity = JSON.parse(localStorage.getItem("savedCity"));
-   for (i = 0; i < loadCity.length; i++) {
-     searchHistory.append(`<button class="btn btn-secondary mb-2" id="historyBtn">${loadCity[i]}</button>`);
-   }
+
+   if (loadCity === "") {
+    null
+   } else {
+    for (i = 0; i < loadCity.length; i++) {
+      searchHistory.append(`<button class="btn btn-secondary mb-2" id="historyBtn">${loadCity[i]}</button>`);
+    }
+  }
 };
 
 // Clears all displays
